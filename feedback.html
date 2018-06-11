@@ -8,11 +8,14 @@
 <link href="media.css" rel="stylesheet" type="text/css">
 <script src="jquery-3.3.1.js"></script>
 <script src="script.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Cuprum" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Bubbler+One" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
 <link href="img\8.png" rel="shortcut icon" type="image/x-icon">
 <title>Стрітенська сільська рада</title>
+<style>
+</style>
 </head>
 <body> 
 <div class="all-site">
@@ -95,7 +98,7 @@
 	</div>
 	</nav>
 	</header>
-	<div class="dws-wrapper">
+	<div class="dws-wrapper" ng-app="myApp" ng-controller="personCtrl">
 	<div class="dws-form">
 		<!-- Вкладки на CSS -->
 		<input type="radio" id="tab-1" name="tabs" checked>
@@ -109,7 +112,7 @@
 			</div>
 
 			<div class="box-input">
-				<input class="input" type="text" required>
+				<input class="input" type="text" ng-model="firstName" required>
 				<label>Введіть ім'я</label>
 			</div>
 			<div class="box-input">
@@ -117,12 +120,13 @@
 				<label>Введіть повідомлення</label>
 			</div>
 
-			<a href="#" class="button">Відправити</a>
-
+			<div id="button__form" onclick="on()">
+				<button type="submit" class="button" onclick="loadDoc()">Відправити</button>
+			</div>
 		</form>
-
-
-
+		<div id="overlay" onclick="off()">
+			<div id="text">Дякуємо за повідомлення {{fullName()}}!</div>
+		</div>
 	</div>
 	</div>
 	<footer class="Footer__main">
@@ -159,6 +163,23 @@
 	</div>
 </footer>
 </div>
+<script>
+	function on() {
+    document.getElementById("overlay").style.display = "block";
+	}
 
+	function off() {
+    document.getElementById("overlay").style.display = "none";
+	}
+</script>
+<script>
+var app = angular.module('myApp', []);
+app.controller('personCtrl', function($scope) {
+    $scope.firstName = "";
+    $scope.fullName = function() {
+        return $scope.firstName
+    };
+});
+</script>
 </body>
 </html>

@@ -117,10 +117,14 @@
 				<label>Введите сообщение</label>
 			</div>
 
-			<a href="#" class="button">Отправить</a>
+			<div id="button__form" onclick="on()">
+				<button type="submit" class="button" >Отправить</button>
+			</div>
 
 		</form>
-
+		<div id="overlay" onclick="off()">
+			<div id="text">Дякуємо за повідомлення!</div>
+		</div>
 
 
 	</div>
@@ -159,6 +163,14 @@
 	</div>
 </footer>
 </div>
+<script>
+	function on() {
+    document.getElementById("overlay").style.display = "block";
+	}
 
+	function off() {
+    document.getElementById("overlay").style.display = "none";
+	}
+</script>
 </body>
 </html>

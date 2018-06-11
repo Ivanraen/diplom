@@ -711,7 +711,6 @@ body {
 	
 }
 /* feedback */
-/* -----  ¬ыравнивание по середине  -----*/
 .dws-wrapper {
 	 display: flex;
 	 height: 100vh;
@@ -722,14 +721,6 @@ body {
 .dws-form {
 	 background-color: rgba(255, 255, 255, 0.2);
 	 padding: 10px;
-}
-.dws-form a {
-	 text-decoration: none;
-	 transition: .5s;
-	 color: #298cad;
-}
-.dws-form a:hover {
-	color: #36d2ff;
 }
 .dws-form ul {
 	 list-style: none;
@@ -766,7 +757,7 @@ input[name="tabs"] {
 	display: none;
 }
 
-/* »конки во вкладках */
+/* ikons */
 .tab::before {
 	 content: '\f090';
 	 font-family: 'FontAwesome', sans-serif;
@@ -778,7 +769,7 @@ input[name="tabs"] {
 	content: '\f234';
 }
 
-/* ‘ормы */
+/* form */
 .input {
 	 font-size: 16px;
 	 border: 2px solid #e9eaea;
@@ -793,7 +784,7 @@ input[name="tabs"] {
 
 
 
-/* ѕлавающий текст */
+/* text */
 .box-input {
 	position: relative;
 }
@@ -818,23 +809,39 @@ input[name="tabs"] {
 	 color: #33d3fe;
 }
 
-/* Ёффект кнопки */
-a.button {
+/* button */
+.dws-form button__form {
+	text-align: center;
+}
+.dws-form button {
+	 text-decoration: none;
+	 transition: .5s;
+	 color: #298cad;
+	 border:none;
+}
+.dws-form button:hover {
+	color: #36d2ff;
+}
+button.button {
 	 background: #298cad;
 	 color: #ffffff;
 	 font-size: 18px;
 	 text-transform: uppercase;
-	 display: block;
+	 display: inline-block;
 	 text-align: center;
 	 line-height: 46px;
 	 margin-top: 30px;
 	 margin-bottom: 10px;
+	 margin-right: 0px;
+	 margin-left: 0px;
 	 position: relative;
 	 z-index: 1;
 	 overflow: hidden;
+	 cursor: pointer;
+	padding: 0px 30px 0px 40px;
 	 border-bottom: 4px solid #36d2ff;
 }
-a.button:hover {
+button.button:hover {
 	color: #ffffff;
 }
 .button::before, .button::after {
@@ -860,4 +867,27 @@ a.button:hover {
 }
 .button:hover::after {
 	top: 0;
+}
+/* button click */
+#overlay {
+    position: fixed; 
+    display: none; 
+    width: 100%; 
+    height: 100%; 
+    top: 0; 
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5); 
+    z-index: 2; 
+    cursor: pointer; 
+}
+#text{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 50px;
+    color: white;
+    transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
 }
