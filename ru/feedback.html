@@ -8,6 +8,7 @@
 <link href="media.css" rel="stylesheet" type="text/css">
 <script src="jquery-3.3.1.js"></script>
 <script src="script.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Cuprum" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Bubbler+One" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
@@ -95,9 +96,10 @@
 	</div>
 	</nav>
 	</header>
-	<div class="dws-wrapper">
+	
+	<div class="dws-wrapper" ng-app="myApp" ng-controller="personCtrl">
 	<div class="dws-form">
-		
+		<!-- Вкладки на CSS -->
 		<input type="radio" id="tab-1" name="tabs" checked>
 		<label class="tab" for="tab-1">Обратная связь</label>
 
@@ -109,7 +111,7 @@
 			</div>
 
 			<div class="box-input">
-				<input class="input" type="text" required>
+				<input class="input" type="text" ng-model="firstName" required>
 				<label>Введите имя</label>
 			</div>
 			<div class="box-input">
@@ -118,15 +120,12 @@
 			</div>
 
 			<div id="button__form" onclick="on()">
-				<button type="submit" class="button" >Отправить</button>
+				<button type="submit" class="button" onclick="loadDoc()">Отправить</button>
 			</div>
-
 		</form>
 		<div id="overlay" onclick="off()">
-			<div id="text">Дякуємо за повідомлення!</div>
+			<div id="text">Спасибо за сообщение {{fullName()}}!</div>
 		</div>
-
-
 	</div>
 	</div>
 	<footer class="Footer__main">
@@ -164,6 +163,14 @@
 </footer>
 </div>
 <script>
+function loadDoc() {
+  var xhttp = new XMLHttpRequest();
+ 
+  xhttp.open("GET", "ajax_info.txt", true);
+  xhttp.send();
+}
+</script>
+<script>
 	function on() {
     document.getElementById("overlay").style.display = "block";
 	}
@@ -171,6 +178,15 @@
 	function off() {
     document.getElementById("overlay").style.display = "none";
 	}
+</script>
+<script>
+var app = angular.module('myApp', []);
+app.controller('personCtrl', function($scope) {
+    $scope.firstName = "";
+    $scope.fullName = function() {
+        return $scope.firstName
+    };
+});
 </script>
 </body>
 </html>
